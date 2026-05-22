@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bambiboo Cottonki – organická bavlna pre vášho malíčka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #FDFAF5;
+    --white: #FFFFFF;
+    --cotton: #E8C99A;
+    --cotton-dark: #B8854A;
+    --cotton-mid: #D4A870;
+    --cotton-pale: #FAF0E0;
+    --cotton-light: #F5E4C8;
+    --sage: #A8B89A;
+    --sage-pale: #EBF0E6;
+    --rose: #E8C4B8;
+    --rose-pale: #FAF0EC;
+    --text-dark: #2A1F0E;
+    --text-mid: #6B5530;
+    --text-light: #A89070;
+    --border: rgba(184,133,74,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--ivory);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--cotton-dark);
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 20px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 40px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--cotton-pale);
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, var(--cotton-light) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(232,201,154,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-right {
+    background: white;
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    border-left: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--cotton-dark);
+    margin-bottom: 20px;
+  }
+  .eyebrow-line { height: 1px; width: 32px; background: var(--cotton-dark); }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+  .hero-title em { font-style: italic; color: var(--cotton-dark); }
+  .hero-desc {
+    font-size: 15px; line-height: 1.8;
+    color: var(--text-mid); font-weight: 300;
+    margin-bottom: 36px;
+    position: relative; z-index: 1;
+  }
+  .hero-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--text-dark);
+    color: white;
+    font-size: 13px; font-weight: 600;
+    padding: 15px 30px; border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    width: fit-content;
+    transition: background 0.2s, transform 0.2s;
+    position: relative; z-index: 1;
+  }
+  .hero-btn:hover { background: var(--cotton-dark); transform: translateY(-1px); }
+  .hero-btn-arrow { transition: transform 0.2s; }
+  .hero-btn:hover .hero-btn-arrow { transform: translateX(4px); }
+
+  .stat-row { display: flex; gap: 28px; flex-wrap: wrap; position: relative; z-index: 1; margin-top: 8px; }
+  .stat-item { }
+  .stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; color: var(--cotton-dark);
+    line-height: 1;
+  }
+  .stat-lbl { font-size: 11px; color: var(--text-light); margin-top: 3px; letter-spacing: 0.03em; }
+
+  .feature-list { list-style: none; }
+  .feature-list li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px; color: var(--text-mid);
+    line-height: 1.6; font-weight: 300;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feat-icon {
+    width: 32px; height: 32px;
+    background: var(--cotton-pale);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .feat-title { font-weight: 600; font-size: 14px; color: var(--text-dark); display: block; margin-bottom: 2px; }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+  .badge {
+    background: var(--cotton-pale);
+    border: 1px solid var(--cotton-light);
+    color: var(--cotton-dark);
+    font-size: 11px; font-weight: 600;
+    padding: 5px 12px; border-radius: 3px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  /* ORGANIC STORY */
+  .story { max-width: 1100px; margin: 0 auto; padding: 100px 40px; }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .story-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--cotton-dark);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    align-self: center;
+  }
+  .story-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.15; margin-bottom: 24px;
+  }
+  .story-content h2 em { font-style: italic; color: var(--cotton-dark); }
+  .story-content p { font-size: 15px; color: var(--text-mid); line-height: 1.85; font-weight: 300; margin-bottom: 16px; }
+  .cotton-properties {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px;
+  }
+  .prop-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .prop-card:hover { border-color: var(--cotton); transform: translateY(-2px); }
+  .prop-emoji { font-size: 28px; margin-bottom: 10px; display: block; }
+  .prop-title { font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+  .prop-desc { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+
+  /* VARIANTS */
+  .variants { background: var(--white); padding: 100px 0; }
+  .variants-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .variants-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
+  .variants-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.2; }
+  .variants-header h2 em { font-style: italic; color: var(--cotton-dark); }
+  .variants-sub { font-size: 14px; color: var(--text-light); max-width: 280px; text-align: right; line-height: 1.6; }
+
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .product-tile {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .product-tile:hover { border-color: var(--cotton); box-shadow: 0 4px 24px rgba(184,133,74,0.12); }
+  .tile-top {
+    padding: 28px 24px;
+    position: relative;
+  }
+  .tile-type {
+    display: inline-block;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px; border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .tile-type.cotton { background: var(--cotton-pale); color: var(--cotton-dark); }
+  .tile-type.wipes { background: var(--sage-pale); color: #5A7050; }
+  .tile-emoji { font-size: 44px; display: block; margin-bottom: 12px; }
+  .tile-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 4px; color: var(--text-dark); }
+  .tile-sub { font-size: 13px; color: var(--text-light); font-weight: 300; }
+  .tile-divider { height: 1px; background: var(--border); margin: 0; }
+  .tile-features { padding: 20px 24px; }
+  .tile-feature {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 13px; color: var(--text-mid);
+    padding: 5px 0; line-height: 1.5; font-weight: 300;
+  }
+  .tile-feature::before { content: '—'; color: var(--cotton); flex-shrink: 0; font-weight: 400; }
+  .size-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .size-badge {
+    background: var(--ivory);
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    font-size: 11px; font-weight: 600;
+    padding: 4px 10px; border-radius: 3px;
+  }
+
+  /* WIPES SECTION */
+  .wipes-full { background: var(--cotton-pale); padding: 80px 40px; }
+  .wipes-full-inner { max-width: 1100px; margin: 0 auto; }
+  .wipes-full-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,3.5vw,44px); margin-bottom: 12px; }
+  .wipes-full-inner h2 em { font-style: italic; color: var(--cotton-dark); }
+  .wipes-full-inner > p { font-size: 15px; color: var(--text-mid); line-height:1.8; font-weight:300; max-width:600px; margin-bottom:40px; }
+  .wipes-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+  .wipe-stat {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border);
+  }
+  .wipe-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--cotton-dark); line-height: 1; }
+  .wipe-stat-label { font-size: 12px; color: var(--text-light); margin-top: 4px; line-height: 1.4; }
+
+  /* CERTS */
+  .certs { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+  .certs h3 { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px; }
+  .certs-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .cert-pill {
+    display: flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 100px;
+    padding: 10px 18px;
+    font-size: 13px; color: var(--text-mid); font-weight: 400;
+  }
+  .cert-check { color: var(--cotton-dark); font-weight: 600; }
+
+  /* CTA */
+  .cta { background: var(--text-dark); padding: 100px 40px; text-align: center; }
+  .cta-inner { max-width: 560px; margin: 0 auto; }
+  .cta-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cotton); margin-bottom: 20px; }
+  .cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); color: white; margin-bottom: 16px; line-height: 1.15; }
+  .cta h2 em { font-style: italic; color: var(--cotton); }
+  .cta p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.75; font-weight: 300; margin-bottom: 40px; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--cotton-dark);
+    color: white;
+    font-size: 14px; font-weight: 600;
+    padding: 17px 40px; border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { background: var(--cotton-mid); transform: translateY(-2px); }
+  .cta-note { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 16px; letter-spacing: 0.03em; }
+
+  footer { background: var(--text-dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 40px; text-align: center; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  footer a { color: var(--cotton); text-decoration: none; }
+
+  @keyframes fadeIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }
+  .hero-left > * { animation: fadeIn 0.6s ease both; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.15s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.25s; }
+  .hero-right { animation: fadeIn 0.7s 0.2s ease both; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 24px; }
+    .hero-right { padding: 40px 24px; border-left: none; border-top: 1px solid var(--border); }
+    .story-grid { grid-template-columns: 1fr; gap: 24px; }
+    .story-label { writing-mode: horizontal-tb; transform: none; }
+    .cotton-properties { grid-template-columns: 1fr 1fr; }
+    .variants-header { flex-direction: column; }
+    .variants-sub { text-align: left; max-width: 100%; }
+    .wipes-full, .certs, .story { padding-left: 24px; padding-right: 24px; }
+    .cta { padding: 70px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">Testovanie produktov Bambiboo pre slovenský trh · Ďakujeme, že ste súčasťou</div>
+
+<!-- NAVBAR -->
+<nav style="position:sticky;top:0;z-index:100;background:rgba(253,250,245,0.93);backdrop-filter:blur(10px);border-bottom:1px solid rgba(184,133,74,0.15);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="#" style="text-decoration:none;display:flex;align-items:center;">
+    <!-- Nahraď tento placeholder SVG logom Bambiboo – umiestni súbor logo.svg do rovnakého priečinka a zmeň src -->
+    <img src="logo.svg" alt="Bambiboo" height="36" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+    <span style="display:none;align-items:center;gap:8px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cotton-dark);">
+      🌾 Bambiboo
+    </span>
+  </a>
+  <a href="#dotaznik" style="background:var(--text-dark);color:white;font-size:13px;font-weight:600;padding:9px 22px;border-radius:4px;text-decoration:none;letter-spacing:0.04em;transition:opacity 0.2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">Vyplniť dotazník →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="eyebrow"><span class="eyebrow-line"></span>Bambiboo Cottonki</div>
+    <h1 class="hero-title">Organická bavlna.<br><em>Mäkká</em> ako<br>prvé objatie.</h1>
+    <p class="hero-desc">Cottonki sú plienky z certifikovanej organickej bavlny GOTS – bez pesticídov, bez syntetických prímesí. Len čistá bavlna, tak ako ju príroda stvorila.</p>
+    <a href="#dotaznik" class="hero-btn">Vyplniť dotazník <span class="hero-btn-arrow">→</span></a>
+    <div class="stat-row">
+      <div class="stat-item"><div class="stat-val">15,5M+</div><div class="stat-lbl">predaných plienok</div></div>
+      <div class="stat-item"><div class="stat-val">4,91</div><div class="stat-lbl">priemerné hodnotenie</div></div>
+      <div class="stat-item"><div class="stat-val">10+</div><div class="stat-lbl">krajín v Európe</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:16px;">Produkty v balíčku</p>
+      <ul class="feature-list">
+        <li>
+          <div class="feat-icon">🌾</div>
+          <div>
+            <span class="feat-title">Cottonki – jednorazové plienky</span>
+            Organická bavlna certifikovaná GOTS · Veľkosť 4 (9–14 kg) a 5 (12–17 kg) · S vreckovitým záhybom v zadnej časti
+          </div>
+        </li>
+        <li>
+          <div class="feat-icon">🧴</div>
+          <div>
+            <span class="feat-title">Vlhčené utierky Bambiboo</span>
+            S extraktom z nevädze · pH neutrálne · Bez alkoholu a parfumov
+          </div>
+        </li>
+        <li>
+          <div class="feat-icon">🏅</div>
+          <div>
+            <span class="feat-title">Certifikácie a testovanie</span>
+            Dermatologicky testované · Oeko-Tex Standard 100 · Výroba v Poľsku
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:12px;">Certifikácie</p>
+      <div class="badge-row">
+        <span class="badge">Oeko-Tex 100</span>
+        <span class="badge">GOTS Cotton</span>
+        <span class="badge">Dermato test</span>
+        <span class="badge">Bez chlóru</span>
+        <span class="badge">Bez parfumov</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY -->
+<div class="story">
+  <div class="story-grid">
+    <div style="display:flex;align-items:center;justify-content:flex-end;padding-right:20px;">
+      <div class="story-label">Prečo organická bavlna</div>
+    </div>
+    <div class="story-content">
+      <h2>Bavlna, ktorá<br>prešla prísnou <em>kontrolou</em></h2>
+      <p>Organická bavlna certifikovaná štandardom GOTS (Global Organic Textile Standard) je pestovaná bez syntetických pesticídov, herbicídov ani geneticky modifikovaných organizmov. Pre detskú pokožku, ktorá je 5× citlivejšia ako pokožka dospelého, je to zásadný rozdiel.</p>
+      <p>Bambiboo Cottonki sú vyrobené v Poľsku s dôrazom na celý výrobný reťazec – od pestovania bavlny až po finálny produkt.</p>
+      <div class="cotton-properties">
+        <div class="prop-card">
+          <span class="prop-emoji">☁️</span>
+          <div class="prop-title">Jemnosť</div>
+          <div class="prop-desc">Prírodná bavlna je mäkká na pokožku bez akejkoľvek chemickej úpravy</div>
+        </div>
+        <div class="prop-card">
+          <span class="prop-emoji">💧</span>
+          <div class="prop-title">Savosť</div>
+          <div class="prop-desc">Bavlna absorbuje vlhkosť a odvádza ju od pokožky bábätka</div>
+        </div>
+        <div class="prop-card">
+          <span class="prop-emoji">🌱</span>
+          <div class="prop-title">Udržateľnosť</div>
+          <div class="prop-desc">GOTS certifikát zaručuje ekologické pestovanie a spravodlivú výrobu</div>
+        </div>
+        <div class="prop-card">
+          <span class="prop-emoji">🛡️</span>
+          <div class="prop-title">Bezpečnosť</div>
+          <div class="prop-desc">Bez pesticídov, farbív a chemických zmäkčovadiel</div>
+        </div>
+        <div class="prop-card">
+          <span class="prop-emoji">🌡️</span>
+          <div class="prop-title">Priedušnosť</div>
+          <div class="prop-desc">Prírodné vlákna umožňujú pokožke dýchať, znižujú potenie</div>
+        </div>
+        <div class="prop-card">
+          <span class="prop-emoji">❤️</span>
+          <div class="prop-title">Hypoalergénnosť</div>
+          <div class="prop-desc">Ideálne aj pre deti s ekzémom alebo atopickou dermatitídou</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="variants">
+  <div class="variants-inner">
+    <div class="variants-header">
+      <h2>Čo ste<br>dostali na<br><em>testovanie</em></h2>
+      <p class="variants-sub">Dva produkty, ktoré spolu tvoria kompletnú rutinu pri prebaľovaní.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-tile">
+        <div class="tile-top" style="background:var(--cotton-pale);">
+          <span class="tile-type cotton">Cottonki</span>
+          <span class="tile-emoji">🌾</span>
+          <div class="tile-name">Cottonki Plienky</div>
+          <div class="tile-sub">Jednorazové plienky s organickou bavlnou</div>
+        </div>
+        <div class="tile-divider"></div>
+        <div class="tile-features">
+          <div class="tile-feature">Vnútorná vrstva z organickej bavlny GOTS priamo pri pokožke</div>
+          <div class="tile-feature">Absorpčné jadro so SAP kryštálikmi – sucho až 12 hodín</div>
+          <div class="tile-feature">Elastické boky a nohavičky pre voľný pohyb</div>
+          <div class="tile-feature">Indikátor vlhkosti meniaci farbu pri navlhčení</div>
+          <div class="tile-feature">Vreckovitý záhyb vzadu – ochrana pri plnom plienke</div>
+          <div class="tile-feature">Bez parfumov, chlóru a ftalátov</div>
+          <div class="size-badges">
+            <span class="size-badge">Veľ. 4 · 9–14 kg</span>
+            <span class="size-badge">Veľ. 5 · 12–17 kg</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-tile">
+        <div class="tile-top" style="background:var(--sage-pale);">
+          <span class="tile-type wipes">Utierky</span>
+          <span class="tile-emoji">🧴</span>
+          <div class="tile-name">Vlhčené Utierky</div>
+          <div class="tile-sub">S extraktom z nevädze</div>
+        </div>
+        <div class="tile-divider"></div>
+        <div class="tile-features">
+          <div class="tile-feature">Extrakt z nevädze – upokojuje a hydratuje pokožku</div>
+          <div class="tile-feature">pH neutrálne – v súlade s prirodzenou pokožkovou bariérou</div>
+          <div class="tile-feature">Bez alkoholu, bez parfumov, bez chlóru</div>
+          <div class="tile-feature">Dermatologicky testované pre novorodeneckú pokožku</div>
+          <div class="tile-feature">Biologicky rozložiteľný materiál</div>
+          <div class="tile-feature">Silná vlhkosť pre čistenie na prvý záber</div>
+          <div class="size-badges">
+        </div>
+      </div>
+
+      <div class="product-tile">
+        <div class="tile-top" style="background:var(--rose-pale);">
+          <span class="tile-type" style="background:var(--rose-pale);color:#8B4A5A;border:1px solid rgba(139,74,90,0.2);">Kombinácia</span>
+          <span class="tile-emoji">✨</span>
+          <div class="tile-name">Prečo spolu?</div>
+          <div class="tile-sub">Cottonki + utierky = kompletná starostlivosť</div>
+        </div>
+        <div class="tile-divider"></div>
+        <div class="tile-features">
+          <div class="tile-feature">Oba produkty sú formulované bez parfumov – znižuje riziko alergie pri kombinácii</div>
+          <div class="tile-feature">Rovnaká filozofia: čisté prírodné zložky bez zbytočnej chémie</div>
+          <div class="tile-feature">Bambiboo utierky sú pH neutrálne, čo zodpovedá pokožkovému pH bábätka</div>
+          <div class="tile-feature">Spoločne minimalizujú riziko opruzenín a podráždenia</div>
+          <div class="tile-feature">Odporúčaná kombinácia rodičmi v 10+ krajinách</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WIPES STATS -->
+<div class="wipes-full">
+  <div class="wipes-full-inner">
+    <h2>Vlhčené utierky<br><em>v číslach</em></h2>
+    <p>Malé čísla, ktoré hovoria veľa o kvalite. Zloženie, ktoré vidíte na etikete, je to jediné, čo je v každej utierke.</p>
+    <div class="wipes-stats">
+      <div class="wipe-stat"><div class="wipe-stat-num">99%</div><div class="wipe-stat-label">zloženie tvorí voda a prírodné látky</div></div>
+      <div class="wipe-stat"><div class="wipe-stat-num">0×</div><div class="wipe-stat-label">alkohol v zložení</div></div>
+      <div class="wipe-stat"><div class="wipe-stat-num">0×</div><div class="wipe-stat-label">parfumy a syntetické vône</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTS -->
+<div class="certs">
+  <h3>Certifikácie a testy</h3>
+  <div class="certs-row">
+    <div class="cert-pill"><span class="cert-check">✓</span> Oeko-Tex Standard 100</div>
+    <div class="cert-pill"><span class="cert-check">✓</span> GOTS certifikovaná bavlna</div>
+    <div class="cert-pill"><span class="cert-check">✓</span> Dermatologicky testované</div>
+    <div class="cert-pill"><span class="cert-check">✓</span> Bez chlóru a parfumov</div>
+    <div class="cert-pill"><span class="cert-check">✓</span> Výroba v Európskej únii</div>
+    <div class="cert-pill"><span class="cert-check">✓</span> Bez GMO</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="dotaznik">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">Vaša spätná väzba</p>
+    <h2>Ako vám Cottonki <em>fungovali?</em></h2>
+    <p>Po niekoľkých dňoch testovania nám prosím venujte 3 minúty. Vaša skúsenosť z praxe je pre nás cennejšia ako akékoľvek laboratórne testy.</p>
+    <a href="LINK_NA_DOTAZNIK" class="cta-btn">Vyplniť dotazník →</a>
+    <p class="cta-note">CCA 3 MINÚTY · ANONYMNÉ ODPOVEDE SÚ V PORIADKU</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Bambiboo · Distribúcia pre SR · <a href="https://bambiboo.eu">bambiboo.eu</a></p>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.product-tile, .prop-card');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }, i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(c => {
+    c.style.opacity = '0';
+    c.style.transform = 'translateY(16px)';
+    c.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    io.observe(c);
+  });
+</script>
+</body>
+</html>
