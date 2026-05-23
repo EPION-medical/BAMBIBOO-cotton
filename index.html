@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bambiboo Cottonki – organická bavlna pre to, čo je Vám najcennejšie</title>
+<title>Bambiboo Cottonki – organická bavlna pre vášho malíčka</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -316,10 +316,12 @@
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 60px 24px; }
     .hero-right { padding: 40px 24px; border-left: none; border-top: 1px solid var(--border); }
-    .story-grid { grid-template-columns: 1fr; gap: 24px; }
-    .story-label { writing-mode: horizontal-tb; transform: none; }
+    .story-grid { grid-template-columns: 1fr; gap: 0; }
+    .story-label-col { display: none; }
+    .story-content::before { content: 'Prečo organická bavlna'; display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cotton-dark); margin-bottom: 14px; }
     .cotton-properties { grid-template-columns: 1fr 1fr; }
-    .variants-header { flex-direction: column; }
+    .variants-header { flex-direction: column; align-items: flex-start; }
+    .variants-inner { padding: 0 24px; }
     .variants-sub { text-align: left; max-width: 100%; }
     .wipes-full, .certs, .story { padding-left: 24px; padding-right: 24px; }
     .cta { padding: 70px 24px; }
@@ -339,10 +341,7 @@
       🌾 Bambiboo
     </span>
   </a>
-  <div style="display:flex;align-items:center;gap:16px;">
-    <a href="bambiboo-bam.html" style="font-size:13px;color:var(--text-light);text-decoration:none;font-weight:400;transition:color 0.2s;" onmouseover="this.style.color='#5A7A45'" onmouseout="this.style.color='var(--text-light)'">Bambuski 🌿</a>
-    <a href="#dotaznik" style="background:var(--text-dark);color:white;font-size:13px;font-weight:600;padding:9px 22px;border-radius:4px;text-decoration:none;letter-spacing:0.04em;transition:opacity 0.2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">Vyplniť dotazník →</a>
-  </div>
+  <a href="#dotaznik" style="background:var(--text-dark);color:white;font-size:13px;font-weight:600;padding:9px 22px;border-radius:4px;text-decoration:none;letter-spacing:0.04em;transition:opacity 0.2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">Vyplniť dotazník →</a>
 </nav>
 
 <!-- HERO -->
@@ -366,21 +365,21 @@
           <div class="feat-icon">🌾</div>
           <div>
             <span class="feat-title">Cottonki – jednorazové plienky</span>
-            Organická bavlna certifikovaná GOTS · Rôzne veľkosti: od 1 (Newborn) až po 6 (15+ kg) · S vreckovitým záhybom v zadnej časti ·
+            Organická bavlna certifikovaná GOTS · Rôzne veľkosti: od 1 (Newborn) až po 6 (15+ kg) · S vreckovitým záhybom v zadnej časti
           </div>
         </li>
         <li>
           <div class="feat-icon">🧴</div>
           <div>
             <span class="feat-title">Vlhčené utierky Bambiboo</span>
-            S extraktom z nevädze · pH neutrálne · Bez alkoholu a parfumov ·
+            S extraktom z nevädze · pH neutrálne · Bez alkoholu a parfumov
           </div>
         </li>
         <li>
           <div class="feat-icon">🏅</div>
           <div>
             <span class="feat-title">Certifikácie a testovanie</span>
-            Dermatologicky testované · Oeko-Tex Standard 100 · Výroba v Poľsku ·
+            Dermatologicky testované · Oeko-Tex Standard 100 · Výroba v Poľsku
           </div>
         </li>
       </ul>
@@ -401,7 +400,7 @@
 <!-- STORY -->
 <div class="story">
   <div class="story-grid">
-    <div style="display:flex;align-items:center;justify-content:flex-end;padding-right:20px;">
+    <div class="story-label-col" style="display:flex;align-items:center;justify-content:flex-end;padding-right:20px;">
       <div class="story-label">Prečo organická bavlna</div>
     </div>
     <div class="story-content">
@@ -412,12 +411,12 @@
         <div class="prop-card">
           <span class="prop-emoji">☁️</span>
           <div class="prop-title">Jemnosť</div>
-          <div class="prop-desc">Prírodná bavlna je mäkká na pokožku bez akejkoľvek chemickej úpravy</div>
+          <div class="prop-desc">Organická bavlna je mäkká na pokožku bez akejkoľvek chemickej úpravy</div>
         </div>
         <div class="prop-card">
           <span class="prop-emoji">💧</span>
           <div class="prop-title">Savosť</div>
-          <div class="prop-desc">Bavlna absorbuje vlhkosť a odvádza ju od pokožky bábätka</div>
+          <div class="prop-desc">Bavlna a absorpčné jadro absorbuje vlhkosť a odvádza ju od pokožky bábätka</div>
         </div>
         <div class="prop-card">
           <span class="prop-emoji">🌱</span>
@@ -427,12 +426,12 @@
         <div class="prop-card">
           <span class="prop-emoji">🛡️</span>
           <div class="prop-title">Bezpečnosť</div>
-          <div class="prop-desc">Bez pesticídov, farbív a chemických zmäkčovadiel</div>
+          <div class="prop-desc">Bez pesticídov, farbív ani chemických zmäkčovadiel</div>
         </div>
         <div class="prop-card">
           <span class="prop-emoji">🌡️</span>
           <div class="prop-title">Priedušnosť</div>
-          <div class="prop-desc">Prírodné vlákna umožňujú pokožke dýchať, znižujú potenie</div>
+          <div class="prop-desc">Prírodné vlákna umožňujú pokožke 'dýchať', znižujú potenie</div>
         </div>
         <div class="prop-card">
           <span class="prop-emoji">❤️</span>
@@ -461,7 +460,7 @@
         </div>
         <div class="tile-divider"></div>
         <div class="tile-features">
-          <div class="tile-feature">Vnútorná vrstva z organickej bavlny GOTS priamo pri pokožke</div>
+          <div class="tile-feature">Vnútorná vrstva z organickej bavlny GOTS priamo na pokožke</div>
           <div class="tile-feature">Absorpčné jadro so SAP kryštálikmi – sucho až 12 hodín</div>
           <div class="tile-feature">Elastické boky a nohavičky pre voľný pohyb</div>
           <div class="tile-feature">Indikátor vlhkosti meniaci farbu pri navlhčení</div>
